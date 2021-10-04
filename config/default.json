@@ -1,4 +1,7 @@
 {
     "mongoURI": "mongodb+srv://Admain123:Admain123@devconnector.byddi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret": "mySecretToken"
+    "jwtSecret": "mySecretToken",
+    "githubClientId": "446d58acd22f6d39cc1b",
+    "githubSecret": "bfd8504e5f2109e922677b07c2ad201432632bf7"
+
 }
