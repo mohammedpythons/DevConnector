@@ -1,7 +1,8 @@
 import React, { useState, Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import e from "cors";
+import { createProfile } from "../../actions/profile";
 const CreateProfile = (props) => {
   const [formData, setFormData] = useState({
     company: "",
@@ -36,6 +37,12 @@ const CreateProfile = (props) => {
   } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: [e.target.value] });
+
+  const onSubmit = (e) => {
+
+    e.preventDefault();
+    props.createProfile(formData, props.history);
+  };
   return (
     <Fragment>
       <h1 className="large text-primary">Create Your Profile</h1>
@@ -44,7 +51,7 @@ const CreateProfile = (props) => {
         profile stand out
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <select name="status" value={status} onChange={(e) => onChange(e)}>
             <option value="0">* Select Professional Status</option>
@@ -79,7 +86,7 @@ const CreateProfile = (props) => {
             placeholder="Website"
             name="website"
             value={website}
-            onChange={(e) => onchange(e)}
+            onChange={(e) => onChange(e)}
           />
           <small className="form-text">
             Could be your own or a company website
@@ -151,7 +158,7 @@ const CreateProfile = (props) => {
                 placeholder="Twitter URL"
                 name="twitter"
                 value={twitter}
-                onChange={(e = onChange(e))}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -162,7 +169,7 @@ const CreateProfile = (props) => {
                 placeholder="Facebook URL"
                 name="facebook"
                 value={facebook}
-                onChange={(e = onChange(e))}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -173,7 +180,7 @@ const CreateProfile = (props) => {
                 placeholder="YouTube URL"
                 name="youtube"
                 value={youtube}
-                onChange={(e = onChange(e))}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -184,7 +191,7 @@ const CreateProfile = (props) => {
                 placeholder="Linkedin URL"
                 name="linkedin"
                 value={linkedin}
-                onChange={(e = onChange(e))}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -195,7 +202,7 @@ const CreateProfile = (props) => {
                 placeholder="Instagram URL"
                 name="instagram"
                 value={instagram}
-                onChange={(e = onChange(e))}
+                onChange={(e) => onChange(e)}
               />
             </div>
           </Fragment>
@@ -210,8 +217,8 @@ const CreateProfile = (props) => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = (state) => {};
-
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(null, { createProfile })(withRouter(CreateProfile));
