@@ -5,8 +5,11 @@ import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import DashboardAction from "./DashboardAction";
+import Experience from './Experience'
+import Education from "./Education";
 
 const Dashboard = (props) => {
+  console.log("look for experience",props)
   useEffect(() => {
     props.getCurrentProfile();
   }, []);
@@ -20,7 +23,11 @@ const Dashboard = (props) => {
         {props.auth.user && props.auth.user.name}{" "}
       </p>
       {props.profile.profile !== null ? (
-        <Fragment>  <DashboardAction /> </Fragment>
+        <Fragment>
+          <DashboardAction />
+          <Experience experience={props.profile.profile.experience} />
+          <Education education={props.profile.profile.education} />
+         </Fragment>
       ) : (
         <Fragment>
             <p>You have not yet setup a profile, please add some info</p>
