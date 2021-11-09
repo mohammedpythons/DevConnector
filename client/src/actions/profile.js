@@ -1,6 +1,4 @@
 import axios from "axios";
-import c from "config";
-import { set } from "mongoose";
 import { setAlert } from "./alert";
 import { CLEAR_PROFILE, DELETE_ACCOUNT, GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from "./types";
 

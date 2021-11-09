@@ -25,8 +25,16 @@ const Dashboard = (props) => {
       {props.profile.profile !== null ? (
         <Fragment>
           <DashboardAction />
-          <Experience experience={props.profile.profile.experience} />
-          <Education education={props.profile.profile.education} />
+          { props.profile.profile.experience.length !== 0 ? <Experience experience={props.profile.profile.experience} />: " "}
+         { props.profile.profile.education.length !== 0 ? <Education education={props.profile.profile.education} /> : " "}
+          <div className="my-2">
+          <button
+            className="btn btn-danger"
+            onClick={() => props.deleteAccount()}
+          >
+            <i className="fas fa-user-minus"></i> Delete My Account
+          </button>
+        </div>
         </Fragment>
       ) : (
         <Fragment>
@@ -37,14 +45,7 @@ const Dashboard = (props) => {
         </Fragment>
       )}
        <Fragment>
-        <div className="my-2">
-          <button
-            className="btn btn-danger"
-            onclick={() => props.deleteAccount()}
-          >
-            <i className="fas fa-user-minus"></i> Delete My Account
-          </button>
-        </div>
+
       </Fragment>
     </Fragment>
   );
