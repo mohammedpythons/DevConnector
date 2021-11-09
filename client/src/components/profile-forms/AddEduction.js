@@ -58,7 +58,7 @@ const onSubmit = (e) => {
             <input type="checkbox" name="current" checked={current} value={current} onChange={e => {
                 setFormData({...formData, current: !current})
                 setToDateDisabled(!toDateDisabled);
-            }} /> {' '}Current Progra
+            }} /> {' '}Current Program
           </p>
         </div>
         <div className="form-group">
