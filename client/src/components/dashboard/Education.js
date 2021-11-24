@@ -9,9 +9,9 @@ const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
     <tr key={edu._id}>
       <td>{edu.school}</td>
-      <td lassName="hide-sm">{edu.degree}</td>
-      <td lassName="hide-sm">{edu.fieldofstudy}</td>
-      <td lassName="hide-sm">
+      <td className="hide-sm">{edu.degree}</td>
+      <td className="hide-sm">{edu.fieldofstudy}</td>
+      <td className="hide-sm">
         <Moment format="YYYY/MM/DD">{edu.from}</Moment> -{" "}
         {edu.to === null ? (
           " Now"
