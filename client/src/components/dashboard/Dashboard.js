@@ -9,10 +9,11 @@ import Experience from "./Experience";
 import Education from "./Education";
 
 const Dashboard = (props) => {
-  console.log("look for experience", props);
+
   useEffect(() => {
     props.getCurrentProfile();
   }, []);
+
   return props.profile.loading && props.profile.profile === null ? (
     <Spinner />
   ) : (
@@ -39,7 +40,7 @@ const Dashboard = (props) => {
       ) : (
         <Fragment>
           <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" classname="btn btn-primary my-1">
+          <Link to="/create-profile" className="btn btn-primary my-1">
             create profile
           </Link>
         </Fragment>
