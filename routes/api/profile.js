@@ -7,6 +7,7 @@ const { check, validationResult } = require("express-validator");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
+const normalize = require("normalize-url");
 
 //@route get api/profile/me
 //@description get current users profile
@@ -62,7 +63,9 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
+    // if (website) profileFields.website = website;
+    if (website && website !== "")
+      profileFields.website = normalize(website, { forceHttps: true });
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
@@ -71,6 +74,7 @@ router.post(
       profileFields.skills = skills.split(",").map((skill) => skill.trim());
     }
     //Build socail object
+
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
     if (facebook) profileFields.social.facebook = facebook;
@@ -141,7 +145,6 @@ router.delete("/", auth, async (req, res) => {
   try {
     //@ Remove posts
     await Post.deleteMany({ user: req.user.id });
-
 
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });

@@ -2,10 +2,7 @@ import React, { useState, Fragment, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { createProfile,getCurrentProfile } from "../../actions/profile";
-
-
-
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const EditProfile = (props) => {
   const [formData, setFormData] = useState({
@@ -26,23 +23,59 @@ const EditProfile = (props) => {
   const [displaySocialInputs, setDispalySocialInputs] = useState(false);
 
   useEffect(() => {
-      getCurrentProfile();
-      console.log("props.profile", props.profile)
-      console.log("props.profile.profile", props.profile.profile)
-      setFormData({
-          company: props.profile.loading || !props.profile.profile.company? '' : props.profile.profile.company,
-          website: props.profile.loading || !props.profile.profile.website? '' : props.profile.profile.website,
-          location: props.profile.loading || !props.profile.profile.location? '' : props.profile.profile.location,
-          status: props.profile.loading || !props.profile.profile.status? '' : props.profile.profile.status,
-          skills: props.profile.loading || !props.profile.profile.skills? '' : props.profile.profile.skills.join(","),
-          githubusername: props.profile.loading || !props.profile.profile.githubusername? '' : props.profile.profile.githubusername,
-          bio: props.profile.loading || !props.profile.profile.bio? '' : props.profile.profile.bio,
-          twitter: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.twitter,
-          facebook: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.facebook,
-          linkedin: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.linkedin,
-          youtube: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.youtube,
-          instagram: props.profile.loading || !props.profile.profile.social ? '' : props.profile.profile.social.instagram,
-      })
+    getCurrentProfile();
+    console.log("props.profile", props.profile);
+    console.log("props.profile.profile", props.profile.profile);
+    setFormData({
+      company:
+        props.profile.loading || !props.profile.profile.company
+          ? ""
+          : props.profile.profile.company,
+      website:
+        props.profile.loading || !props.profile.profile.website
+          ? ""
+          : props.profile.profile.website,
+      location:
+        props.profile.loading || !props.profile.profile.location
+          ? ""
+          : props.profile.profile.location,
+      status:
+        props.profile.loading || !props.profile.profile.status
+          ? ""
+          : props.profile.profile.status,
+      skills:
+        props.profile.loading || !props.profile.profile.skills
+          ? ""
+          : props.profile.profile.skills.join(","),
+      githubusername:
+        props.profile.loading || !props.profile.profile.githubusername
+          ? ""
+          : props.profile.profile.githubusername,
+      bio:
+        props.profile.loading || !props.profile.profile.bio
+          ? ""
+          : props.profile.profile.bio,
+      twitter:
+        props.profile.loading || !props.profile.profile.social
+          ? ""
+          : props.profile.profile.social.twitter,
+      facebook:
+        props.profile.loading || !props.profile.profile.social
+          ? ""
+          : props.profile.profile.social.facebook,
+      linkedin:
+        props.profile.loading || !props.profile.profile.social
+          ? ""
+          : props.profile.profile.social.linkedin,
+      youtube:
+        props.profile.loading || !props.profile.profile.social
+          ? ""
+          : props.profile.profile.social.youtube,
+      instagram:
+        props.profile.loading || !props.profile.profile.social
+          ? ""
+          : props.profile.profile.social.instagram,
+    });
   }, [props.profile.loading]);
 
   const {
@@ -179,7 +212,7 @@ const EditProfile = (props) => {
               <i className="fab fa-twitter fa-2x"></i>
               <input
                 type="text"
-                placeholder="Twitter URL"
+                placeholder="Twitter Username"
                 name="twitter"
                 value={twitter}
                 onChange={(e) => onChange(e)}
@@ -190,7 +223,7 @@ const EditProfile = (props) => {
               <i className="fab fa-facebook fa-2x"></i>
               <input
                 type="text"
-                placeholder="Facebook URL"
+                placeholder="Facebook Username"
                 name="facebook"
                 value={facebook}
                 onChange={(e) => onChange(e)}
@@ -223,7 +256,7 @@ const EditProfile = (props) => {
               <i className="fab fa-instagram fa-2x"></i>
               <input
                 type="text"
-                placeholder="Instagram URL"
+                placeholder="Instagram Username"
                 name="instagram"
                 value={instagram}
                 onChange={(e) => onChange(e)}
@@ -232,7 +265,7 @@ const EditProfile = (props) => {
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" value="Update"/>
+        <input type="submit" className="btn btn-primary my-1" value="Update" />
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
@@ -248,7 +281,9 @@ EditProfile.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    profile: state.profile
-})
+  profile: state.profile,
+});
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(withRouter(EditProfile));
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);

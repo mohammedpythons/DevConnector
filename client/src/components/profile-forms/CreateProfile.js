@@ -39,7 +39,6 @@ const CreateProfile = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
-
     e.preventDefault();
     props.createProfile(formData, props.history);
   };
@@ -155,7 +154,7 @@ const CreateProfile = (props) => {
               <i className="fab fa-twitter fa-2x"></i>
               <input
                 type="text"
-                placeholder="Twitter URL"
+                placeholder="Twitter Username"
                 name="twitter"
                 value={twitter}
                 onChange={(e) => onChange(e)}
@@ -166,7 +165,7 @@ const CreateProfile = (props) => {
               <i className="fab fa-facebook fa-2x"></i>
               <input
                 type="text"
-                placeholder="Facebook URL"
+                placeholder="Facebook Username"
                 name="facebook"
                 value={facebook}
                 onChange={(e) => onChange(e)}
@@ -199,7 +198,7 @@ const CreateProfile = (props) => {
               <i className="fab fa-instagram fa-2x"></i>
               <input
                 type="text"
-                placeholder="Instagram URL"
+                placeholder="Instagram Username"
                 name="instagram"
                 value={instagram}
                 onChange={(e) => onChange(e)}
@@ -208,7 +207,7 @@ const CreateProfile = (props) => {
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" value="Create"/>
+        <input type="submit" className="btn btn-primary my-1" value="Create" />
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
