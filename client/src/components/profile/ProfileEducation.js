@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Moment from "react-moment";
 
 const ProfileEducation = ({ profile: { education } }) => {
-  console.log(education);
   const mappedEducation = education.map((edu, inx) => (
     <div key={inx}>
       <h3>{edu.school}</h3>

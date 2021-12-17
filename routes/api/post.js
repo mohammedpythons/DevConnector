@@ -20,7 +20,7 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select("-password");
-      //   console.log("this is user", user);
+
       const newPost = new Post({
         text: req.body.text,
         name: user.name,
@@ -54,7 +54,6 @@ router.get("/", auth, async (req, res) => {
 // @access private
 router.get("/:id", auth, async (req, res) => {
   try {
-    console.log(req.params.id);
     const post = await Post.findById(req.params.id).sort({ date: -1 });
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
@@ -74,7 +73,6 @@ router.get("/:id", auth, async (req, res) => {
 // @access private
 router.delete("/:id", auth, async (req, res) => {
   try {
-    console.log(req.params.id);
     const post = await Post.findById(req.params.id);
     // Check user
     if (!post) {

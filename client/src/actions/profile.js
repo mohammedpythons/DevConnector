@@ -7,7 +7,7 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   GET_PROFILES,
-  GET_PEPOS
+  GET_PEPOS,
 } from "./types";
 
 //GET CURRENT USERS PROFILES
@@ -47,7 +47,6 @@ export const getProfile = () => async (dispatch) => {
 
 // get prfile by id
 export const getProfileById = (userId) => async (dispatch) => {
-
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
 
@@ -70,6 +69,7 @@ export const getGithubRepos = (username) => async (dispatch) => {
   });
   try {
     const res = await axios.get(`/api/profile/github/${username}`);
+
     dispatch({
       type: GET_PEPOS,
       payload: res.data,
@@ -123,8 +123,6 @@ export const createProfile =
 //Add Experience
 
 export const addExperience = (formData, history) => async (dispatch) => {
-  console.log("THIS IS FROM ACTION EXPERIENCE", formData);
-
   try {
     const config = {
       headers: {
@@ -230,7 +228,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be UNDONE!")) {
     try {
-       await axios.delete(`/api/profile`);
+      await axios.delete(`/api/profile`);
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: DELETE_ACCOUNT });

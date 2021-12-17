@@ -1,4 +1,11 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES,GET_PEPOS } from "../actions/types";
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  CLEAR_PROFILE,
+  UPDATE_PROFILE,
+  GET_PROFILES,
+  GET_PEPOS,
+} from "../actions/types";
 
 const initialState = {
   profile: null,
@@ -20,13 +27,13 @@ const profile = (state = initialState, action) => {
         loading: false,
       };
     case GET_PROFILES:
-      return {...state, profiles: payload, loading: false}
+      return { ...state, profiles: payload, loading: false };
     case GET_PEPOS:
       return {
         ...state,
         repos: payload,
-        loading: false
-      }
+        loading: false,
+      };
     case CLEAR_PROFILE:
       return {
         ...state,

@@ -8,6 +8,7 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
+import ProfileGithub from "./ProfileGithub";
 
 const Profile = ({
   getProfileById,
@@ -40,6 +41,9 @@ const Profile = ({
             <ProfileAbout profile={profile} />
             <ProfileExperience profile={profile} />
             <ProfileEducation profile={profile} />
+            {profile.githubusername && (
+              <ProfileGithub username={profile.githubusername} />
+            )}
           </div>
         </Fragment>
       )}

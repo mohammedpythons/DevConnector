@@ -24,8 +24,7 @@ const EditProfile = (props) => {
 
   useEffect(() => {
     getCurrentProfile();
-    console.log("props.profile", props.profile);
-    console.log("props.profile.profile", props.profile.profile);
+
     setFormData({
       company:
         props.profile.loading || !props.profile.profile.company
