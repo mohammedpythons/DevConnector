@@ -34,8 +34,8 @@ const ProfileEducation = ({ profile: { education } }) => {
     </div>
   ));
   return (
-    <div class="profile-edu bg-white p-2">
-      <h2 class="text-primary">Education</h2>
+    <div className="profile-edu bg-white p-2">
+      <h2 className="text-primary">Education</h2>
       {education.length > 0 ? mappedEducation : "No education credentials"}
     </div>
   );
