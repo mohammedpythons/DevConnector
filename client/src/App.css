@@ -315,7 +315,9 @@ button {
 .navbar ul {
   display: flex;
 }
-
+.curs {
+  cursor: pointer;
+}
 .navbar a {
   color: #fff;
   padding: 0.45rem;

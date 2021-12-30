@@ -19,7 +19,7 @@ const Navbar = (props) => {
         </Link>
       </li>
       <li>
-        <a onClick={props.logout}>
+        <a onClick={props.logout} className="curs">
           <i className="fas fa-sign-out-alt"></i>{" "}
           <span className="hide-sm"> Logout </span>
         </a>
